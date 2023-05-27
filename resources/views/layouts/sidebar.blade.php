@@ -18,9 +18,9 @@
   </li>
   
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('products') }}">
+    <a class="nav-link" href="{{ route('contacts') }}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Product</span></a>
+      <span>Contact</span></a>
   </li>
   
   <li class="nav-item">

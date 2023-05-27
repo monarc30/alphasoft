@@ -34,6 +34,16 @@ Route::middleware('auth')->group(function (){
         return view('dashboard');
     })->name('dashboard');
 
+    Route::controller(ContactController::class)->prefix('contacts')->group(function () {
+        Route::get('', 'index')->name('contacts');
+        Route::get('create', 'create')->name('contacts.create');
+        Route::post('store', 'store')->name('contacts.store');
+        Route::get('show/{id}', 'show')->name('contacts.show');
+        Route::get('edit/{id}', 'edit')->name('contacts.edit');
+        Route::put('edit/{id}', 'update')->name('contacts.update');
+        Route::delete('destroy/{id}', 'destroy')->name('contacts.destroy');
+    });
+
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
 });
 
