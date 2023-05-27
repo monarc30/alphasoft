@@ -46,7 +46,7 @@
                                             @enderror
                                     </div>                                                                        
                                     <div class="col-sm-6">                                
-                                        <input name="name" id="name" type="email" class="form-control form-control-user @error('email')is-invalid @enderror" id="exampleInputEmail"
+                                        <input name="email" id="email" type="email" class="form-control form-control-user @error('email')is-invalid @enderror" id="exampleInputEmail"
                                             placeholder="Email Address">
                                             @error('email')
                                                 <span class="invalid-feedback">{{ $message }}</span>
@@ -73,7 +73,7 @@
                             </form>                            
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+                                <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>
