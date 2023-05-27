@@ -15,8 +15,8 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+    return redirect()->route('auth.login');
 });
 
 Route::controller(AuthController::class)->group(function() {
@@ -31,6 +31,7 @@ Route::controller(AuthController::class)->group(function() {
 });
 
 Route::middleware('auth')->group(function (){
+
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
