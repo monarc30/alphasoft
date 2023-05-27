@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin 2 - Register</title>
+  <title>Register</title>
   <!-- Custom fonts for this template-->
   <link href="{{ asset('admin_assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -23,7 +23,7 @@
           <div class="col-lg-12">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                <h1 class="h4 text-gray-900 mb-4">Create an Account</h1>
               </div>
               <form action="{{ route('register.save') }}" method="POST" class="user">
                 @csrf
@@ -47,7 +47,7 @@
                     @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input name="password_confirmation" type="password" class="form-control form-control-user @error('password_confirmation')is-invalid @enderror" id="exampleRepeatPassword" placeholder="Repeat Password">
+                    <input name="password_confirmation" type="password" class="form-control form-control-user @error('password_confirmation')is-invalid @enderror" id="ConfirmPassword" placeholder="Confirm Password">
                     @error('password_confirmation')
                       <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -57,7 +57,7 @@
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
+                <a class="small" href="{{ route('login') }}">Login Here</a>
               </div>
             </div>
           </div>
