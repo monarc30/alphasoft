@@ -37,9 +37,16 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        Contact::create($request->all());
- 
-        return redirect()->route('contacts')->with('success', 'Contact added successfully');
+        
+        $contact = Contact::firstOrCreate([
+            'email' => $request->email 
+        ], $request->all());
+
+        if ($contact->wasRecentlyCreated) {
+            return redirect()->route('contacts')->with('success', 'Contact added successfully');        
+        }else{
+            return redirect()->route('contacts')->with('error', 'Contact already exists');        
+        }
     }
 
     /**
@@ -76,12 +83,22 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {       
+
         $contact = Contact::findOrFail($id);
-  
-        $contact->update($request->all());
-  
-        return redirect()->route('contacts')->with('success', 'contact updated successfully');
+
+        $update = [
+            'email'     => request('email'),            
+        ];
+        
+        $new_contact = $contact->firstOrNew($update);        
+
+        if($new_contact->exists === false){            
+            $contact->update($request->all());
+            return redirect()->route('contacts')->with('success', 'contact updated successfully');
+        }else{
+            return redirect()->route('contacts')->with('error', 'Email already existis');
+        }
     }
 
     /**
